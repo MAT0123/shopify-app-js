@@ -516,8 +516,8 @@ importers:
         specifier: ^7.29.2
         version: 7.29.2(@babel/core@7.29.0)
       '@shopify/generate-docs':
-        specifier: ^1.1.0
-        version: 1.1.0
+        specifier: ^1.1.3
+        version: 1.1.3
       '@shopify/react-testing':
         specifier: ^6.0.0
         version: 6.0.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -574,8 +574,8 @@ importers:
         specifier: ^2.17.4
         version: 2.17.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.9.3)
       '@shopify/generate-docs':
-        specifier: ^1.1.0
-        version: 1.1.0
+        specifier: ^1.1.3
+        version: 1.1.3
       '@shopify/polaris':
         specifier: ^12.18.0
         version: 12.27.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -3861,8 +3861,8 @@ packages:
     peerDependencies:
       eslint: ^8.56.0
 
-  '@shopify/generate-docs@1.1.0':
-    resolution: {integrity: sha512-lT7Hewa+VDhixMDLdy5Z38A6Qagd2q/nrRhJhjyB3d0z4xHOQIvSiR/ZsL2qOw+56EUneIgP6rHipFIa+yitLQ==}
+  '@shopify/generate-docs@1.1.3':
+    resolution: {integrity: sha512-sGXGxLYxnXZxzWY17FJgzcVWcIp+6Wk494ej7Q58WvwssdpKrsWNgKNjFa1BhsjTkQEQhQmn3rqB1PsmofoFlw==}
     hasBin: true
 
   '@shopify/graphql-codegen@0.1.0':
@@ -8475,11 +8475,6 @@ packages:
     peerDependencies:
       eslint: ^8.57.0 || ^9.0.0
       typescript: '>=4.8.4 <6.0.0'
-
-  typescript@5.8.3:
-    resolution: {integrity: sha512-p1diW6TqL9L07nNxvRMM7hMMw4c5XOo/1ibL4aAIGmSAt9slTE1Xgw5KWuof2uTOvCg9BY7ZRi+GaF+7sfgPeQ==}
-    engines: {node: '>=14.17'}
-    hasBin: true
 
   typescript@5.9.3:
     resolution: {integrity: sha512-jl1vZzPDinLr9eUt3J/t7V6FgNEw9QjvBPdysz9KfQDD41fQrC2Y4vKQdiaUpFT4bXlb1RHhLpp8wtm6M5TgSw==}
@@ -13239,11 +13234,11 @@ snapshots:
       - supports-color
       - typescript
 
-  '@shopify/generate-docs@1.1.0':
+  '@shopify/generate-docs@1.1.3':
     dependencies:
       '@types/react': 18.3.28
       globby: 11.1.0
-      typescript: 5.8.3
+      typescript: 5.9.3
 
   '@shopify/graphql-codegen@0.1.0(graphql@16.13.2)':
     dependencies:
@@ -18933,8 +18928,6 @@ snapshots:
       typescript: 5.9.3
     transitivePeerDependencies:
       - supports-color
-
-  typescript@5.8.3: {}
 
   typescript@5.9.3: {}
 
