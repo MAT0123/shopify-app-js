@@ -48,13 +48,17 @@ export class MongoDBSessionStorage implements SessionStorage {
   public async storeSession(session: Session): Promise<boolean> {
     await this.ready;
 
-    await this.collection.findOneAndReplace(
-      {id: session.id},
-      session.toObject(),
-      {
-        upsert: true,
-      },
-    );
+    const entries = session.toPropertyArray();
+    const doc: Record<string, any> = {};
+    for (const [key, value] of entries) {
+      if (value !== undefined && value !== null) {
+        doc[key] = value;
+      }
+    }
+
+    await this.collection.findOneAndReplace({id: session.id}, doc, {
+      upsert: true,
+    });
     return true;
   }
 
@@ -63,7 +67,17 @@ export class MongoDBSessionStorage implements SessionStorage {
 
     const result = await this.collection.findOne({id});
 
-    return result ? new Session(result) : undefined;
+    if (!result) return undefined;
+
+    const entries: [string, any][] = [];
+    for (const [key, value] of Object.entries(result)) {
+      if (key === '_id') continue;
+      if (value !== null && value !== undefined) {
+        entries.push([key, value]);
+      }
+    }
+
+    return Session.fromPropertyArray(entries);
   }
 
   public async deleteSession(id: string): Promise<boolean> {
@@ -84,7 +98,16 @@ export class MongoDBSessionStorage implements SessionStorage {
     const rawResults = await this.collection.find({shop}).toArray();
     if (!rawResults || rawResults?.length === 0) return [];
 
-    return rawResults.map((rawResult: any) => new Session(rawResult));
+    return rawResults.map((rawResult: any) => {
+      const entries: [string, any][] = [];
+      for (const [key, value] of Object.entries(rawResult)) {
+        if (key === '_id') continue;
+        if (value !== null && value !== undefined) {
+          entries.push([key, value]);
+        }
+      }
+      return Session.fromPropertyArray(entries);
+    });
   }
 
   public async disconnect(): Promise<void> {
