@@ -92,6 +92,7 @@ export class MongoDBSessionStorage implements SessionStorage {
     return true;
   }
 
+  
   public async findSessionsByShop(shop: string): Promise<Session[]> {
     await this.ready;
 
